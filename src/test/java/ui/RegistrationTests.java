@@ -269,7 +269,6 @@ public class RegistrationTests {
                 password,
                 password);
         checkUserCreation();
-
     }
 
     @Test

@@ -38,6 +38,9 @@ public class Controller {
     MainPage mainPage = new MainPage();
     CreateAccountPage createAccountPage = new CreateAccountPage();
 
+    public Controller() {
+        System.setProperty("webdriver.http.factory", "jdk-http-client");
+    }
     public String getUrl() {
         return urlMainPage;
     }
