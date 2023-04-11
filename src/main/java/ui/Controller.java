@@ -1,11 +1,15 @@
 package ui;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import javax.mail.MessagingException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -23,7 +27,7 @@ public class Controller {
 
     private static final String urlMainPage = "https://" + data[0] + "@stage.rcgtiming.com/";
 
-    private static final String pathToConfigFile = "C:/Users/Luna/IdeaProjects/RCGT-secret/pass.txt";
+    private static final String pathToConfigFile = "../RCGT-secret/pass.txt";//"C:/Users/Luna/IdeaProjects/RCGT-secret/pass.txt";
     private static final String eventsURL = "https://stage.rcgtiming.com/Timing/Competitions";
     private static final String adminEmail = data[1];
     private static final String adminPass = data[2];
@@ -116,6 +120,7 @@ public class Controller {
     }
 
     public void createRegistrationData() {
+
         Selenide.open(urlMainPage + "signup");
         countryNumber = (int) (Math.random()*250);
         userEmail = "juli+test" + RandomStringUtils.randomNumeric(10) + "@rcgtiming.com";
@@ -176,6 +181,13 @@ public class Controller {
         eventsPage.getButtonDeleteEvent().click();
         eventsPage.getCheckConfirmationEventDelete().click();
         eventsPage.getButtonConfirmEventDelete().click();
+    }
+
+    // изменение конфигурации браузера для корректной работы в Docker-конейнере
+    public void changBrowserConfiguration() {
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--headless");
+        Configuration.browserCapabilities = chromeOptions;
     }
 
 }

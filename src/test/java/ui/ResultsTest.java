@@ -16,6 +16,7 @@ public class ResultsTest {
 
     @BeforeClass
     public static void setUp() throws InterruptedException {
+        controller.changBrowserConfiguration();
         RestAssured.baseURI = controller.getUrl();
         Selenide.open(controller.getUrl());
         controller.userSignIn(controller.getAdminEmail(), controller.getAdminPassword());

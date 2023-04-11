@@ -1,12 +1,17 @@
 package ui;
 
+import com.codeborne.selenide.Configuration;
 import org.hamcrest.MatcherAssert;
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 
 import static org.hamcrest.core.StringContains.containsString;
 
@@ -25,6 +30,10 @@ public class AuthorizationTests {
     public AuthorizationTests() throws Exception {
     }
 
+    @BeforeClass
+    public static void preparation() {
+        controller.changBrowserConfiguration();
+    }
     @After
     public void deleteCreatedUser() throws InterruptedException {
         if (userCreated) {

@@ -1,7 +1,9 @@
 package ui;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.*;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
@@ -24,6 +26,8 @@ public class CarRaceStartingAndHoldingTest {
 
     @BeforeClass
     public static void userAndEventCreation() throws InterruptedException, MessagingException, IOException {
+
+        controller.changBrowserConfiguration();
         controller.createRegistrationData();
         userEmail = controller.userEmail;
         controller.fullShortRegistrationForm(
@@ -39,7 +43,7 @@ public class CarRaceStartingAndHoldingTest {
     /*    Selenide.open("https://rcgt:forthewin@stage.rcgtiming.com/");
         controller.userSignIn("july.luna.m+maintest@gmail.com", password);
         mainPage.getEventsButton().click();*/
-// --------------------
+// -----------
         controller.eventCreation(eventName);
         controller.eventsPage.getEventTitleInTheTable().click();
         event = url() + "#drivers";

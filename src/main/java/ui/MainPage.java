@@ -2,9 +2,6 @@ package ui;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.checkerframework.checker.units.qual.C;
-
-import static com.codeborne.selenide.Selectors.by;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
