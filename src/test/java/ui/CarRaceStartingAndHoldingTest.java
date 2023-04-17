@@ -1,9 +1,7 @@
 package ui;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.*;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
@@ -51,7 +49,7 @@ public class CarRaceStartingAndHoldingTest {
         eventPage.getBuggy8Nitro().click();
         eventPage.getConfirmButtonInAddClassesModalWindow().click();
         eventPage.getDriversTab().click();
-        DriverRegistrationTests.addDriverEntry("Buggy 8 Nitro",
+        DriverRegistrationTest.addDriverEntry("Buggy 8 Nitro",
                 "Carlos",
                 "Canas",
                 "Spain",
