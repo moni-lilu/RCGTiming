@@ -3,48 +3,44 @@ package ui;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.ini4j.Ini;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import javax.mail.MessagingException;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class Controller {
-
-    private static final String[] data;
-
+    public static String secretPath = "/run/secrets/rcgt_config";
+    public static String pathToConfig = "./config.ini";
+    private static String urlMainPage = "";
+    private static String adminEmail = "";
+    private static String adminPass = "";
+    private static String testEmailForActivation = "";
+    private static String secretPasswordForEmail = "";
+    private static String downloadsFolderPath = "";
+    private static String testIPForConnection = "";
+    private static String authToken = "";
     static {
         try {
-            data = getData();
+            getConfiguration();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    private static final String urlMainPage = "https://" + data[0] + "@stage.rcgtiming.com/";
-
-    private static final String pathToConfigFile = "../RCGT-secret/pass.txt";//"C:/Users/Luna/IdeaProjects/RCGT-secret/pass.txt";
     private static final String eventsURL = "https://stage.rcgtiming.com/Timing/Competitions";
-    private static final String adminEmail = data[1];
-    private static final String adminPass = data[2];
-    private static final String testEmailForActivation = data[3];
-    private static final String secretPasswordForEmail = data[4];
-    private static final String downloadsFolderPath = data[5];
-    private static final String testIPForConnection = data[6];
-    private static final String authToken = data[7];
     EventsPage eventsPage = new EventsPage();
     int countryNumber;
     String userEmail;
     MainPage mainPage = new MainPage();
     CreateAccountPage createAccountPage = new CreateAccountPage();
 
-    public Controller() {
+  /*  public Controller() {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
-    }
+    }*/
     public String getUrl() {
         return urlMainPage;
     }
@@ -55,23 +51,42 @@ public class Controller {
     public String getDownloadsFolderPath() {return downloadsFolderPath;}
     public String getTestIPForConnection() {return testIPForConnection;}
     public String getAuthToken() {return authToken;}
-    private static String[] getData() throws Exception {
 
-        FileReader fr = new FileReader(pathToConfigFile);
-        Scanner scan = new Scanner(fr);
+    private static void getConfiguration() throws IOException {
+        String pathToFile = "";
 
-        String[] data = new String[8];
-
-        if (scan.hasNextLine()) {
-            data[0] = scan.nextLine() + ":" + scan.nextLine();
-            for (int i = 1; i <= 7; i++) {
-                data[i] = scan.nextLine();
-            }
+        File configFile = new File(pathToConfig);
+        if (configFile.exists()) {
+            pathToFile = pathToConfig;
+        } else {
+            pathToFile = secretPath;
         }
+        File fileToParse = new File(pathToFile);
+        Ini ini = new Ini(fileToParse);
+        urlMainPage = "https://"
+                + ini.get("accesses", "StageLogin")
+                + ":"
+                + ini.get("accesses", "StagePassword")
+                + "@stage.rcgtiming.com/";
+        adminEmail = ini.get("accesses", "AdminEmail");
+        adminPass = ini.get("accesses", "AdminPassword");
+        testEmailForActivation = ini.get("accesses", "TestEmail");
+        secretPasswordForEmail = ini.get("accesses", "TestPassword");
+        downloadsFolderPath = ini.get("configuration", "DownloadsFolderPath");
+        testIPForConnection = ini.get("configuration", "IPForConnaction");
+        authToken = ini.get("configuration", "AuthorisationToken");
+        Boolean headless = Boolean.valueOf(ini.get("configuration", "Headless"));
 
-        fr.close();
 
-        return data;
+        System.out.println(urlMainPage);
+        System.out.println(headless);
+
+        if (headless) {
+            // изменение конфигурации браузера для корректной работы в Docker-конейнере
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.addArguments("--headless");
+            Configuration.browserCapabilities = chromeOptions;
+        }
     }
 
     public void fullShortRegistrationForm(String name,
@@ -129,7 +144,7 @@ public class Controller {
     }
 
     public void activateAccount() throws InterruptedException, MessagingException, IOException {
-        ReadEmail readEmail = new ReadEmail();
+        //ReadEmail readEmail = new ReadEmail();
         Thread.sleep(4000);
         String href = ReadEmail.getActivateHref(userEmail);
         if (!href.isEmpty()) {
@@ -181,13 +196,6 @@ public class Controller {
         eventsPage.getButtonDeleteEvent().click();
         eventsPage.getCheckConfirmationEventDelete().click();
         eventsPage.getButtonConfirmEventDelete().click();
-    }
-
-    // изменение конфигурации браузера для корректной работы в Docker-конейнере
-    public void changBrowserConfiguration() {
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--headless");
-        Configuration.browserCapabilities = chromeOptions;
     }
 
 }

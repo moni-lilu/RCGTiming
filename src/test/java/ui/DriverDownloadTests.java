@@ -27,7 +27,6 @@ public class DriverDownloadTests {
     @BeforeClass
     public static void userCreation() throws InterruptedException, MessagingException, IOException {
 
-        controller.changBrowserConfiguration();
         controller.createRegistrationData();
         userEmail = controller.userEmail;
         controller.fullShortRegistrationForm(

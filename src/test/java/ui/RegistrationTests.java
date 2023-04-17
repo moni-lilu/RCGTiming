@@ -31,7 +31,6 @@ public class RegistrationTests {
 
     @BeforeClass
     public static void preparation() {
-        controller.changBrowserConfiguration();
         urlMainPage = controller.getUrl();
         urlSignUpPage = controller.getUrl() + "signup";
     }

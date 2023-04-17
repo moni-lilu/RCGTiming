@@ -27,7 +27,6 @@ public class CarRaceStartingAndHoldingTest {
     @BeforeClass
     public static void userAndEventCreation() throws InterruptedException, MessagingException, IOException {
 
-        controller.changBrowserConfiguration();
         controller.createRegistrationData();
         userEmail = controller.userEmail;
         controller.fullShortRegistrationForm(
