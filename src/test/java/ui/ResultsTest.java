@@ -2,7 +2,9 @@ package ui;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.google.gson.Gson;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
+import jdk.jfr.Description;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -30,6 +32,8 @@ public class ResultsTest {
 
 
     @Test
+    @DisplayName("Get status code")
+    @Description("Should return status code 200")
     public void getStatusCode() {
         given()
                 .header("X-Auth-Token", controller.getAuthToken())
@@ -38,6 +42,8 @@ public class ResultsTest {
     }
 
     @Test
+    @DisplayName("Best lap position")
+    @Description("Positions should be allocated by the best lap")
     public void positionsShouldBeAllocatedByTheBestLap() throws InterruptedException {
         selectTab("Seeding");
         chooseRankingRule("Single best lap");
@@ -46,7 +52,9 @@ public class ResultsTest {
     }
 
     @Test
-    public void positionsShouldBeAllocatedByTheBestThreeLap() throws InterruptedException {
+    @DisplayName("Best three laps position")
+    @Description("Positions should be allocated by three best laps")
+    public void positionsShouldBeAllocatedByTheBestThreeLaps() throws InterruptedException {
         selectTab("Seeding");
         chooseRankingRule("Best three-lap sequence");
         Boolean rangeIsCorrect = checkRangeIsCorrect("Best three-lap sequence");
@@ -54,6 +62,8 @@ public class ResultsTest {
     }
 
     @Test
+    @DisplayName("By the number of laps for the personal time position")
+    @Description("Positions should be allocated by the number of laps for the personal time")
     public void positionsShouldBeAllocatedByTheNumberOfLapsForThePersonalTime() throws InterruptedException {
         selectTab("Seeding");
         chooseRankingRule("Number of laps for the personal time");
@@ -62,6 +72,8 @@ public class ResultsTest {
     }
 
     @Test
+    @DisplayName("By the number of laps for the overall time position")
+    @Description("Positions should be allocated by the number of laps for the overall time")
     public void positionsShouldBeAllocatedByTheNumberOfLapsForTheOverallTime() throws InterruptedException {
         selectTab("Seeding");
         chooseRankingRule("Number of laps for the overall time");
