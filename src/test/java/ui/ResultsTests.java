@@ -11,7 +11,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static io.restassured.RestAssured.given;
 
-public class ResultsTest {
+public class ResultsTests {
 
     FormatPage formatPage = new FormatPage();
     static Controller controller = new Controller();
