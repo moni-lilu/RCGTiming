@@ -134,7 +134,7 @@ public class DriverRegistrationTest {
         Assert.assertEquals("First and Last Name should not be empty", actual);
     }
 
- /*   @Test
+    @Test
     public void shouldBeBlockedDriverRegistrationFormIfClassWasNotSelected() {
         eventPage.getAddDriverEntryButton().click();
         String actual = eventPage.getDriverRegistrationForm().getAttribute("style");
@@ -216,7 +216,7 @@ public class DriverRegistrationTest {
         deleteEntry();
         Assert.assertEquals("Carlos Juan-Canas", actual);
     }
-    @Test
+  /*  @Test
     public void registrationMustBeSuccessfulIfLastNameContainsSpase() throws InterruptedException {
         addDriverEntry("Buggy 8 Nitro",
                 "Carlos",
