@@ -43,7 +43,6 @@ public class DriverRegistrationTest {
         controller.eventCreation(eventName);
         controller.eventsPage.getEventTitleInTheTable().click();
         event = url() + "#drivers";
-        System.out.println("eventUrl: " + event);
         addClasses();
         eventPage.getDriversTab().click();
 
@@ -309,6 +308,7 @@ public class DriverRegistrationTest {
                 "Spain",
                 "01234567899");
         String actual = eventPage.getInvalidTransponderNumberError().getText();
+        eventPage.getCancelButtonInEditForm().click();
         Assert.assertEquals("Invalid Transponder number", actual);
     }
 
@@ -320,6 +320,7 @@ public class DriverRegistrationTest {
                 "Spain",
                 "012345678900000");
         String actual = eventPage.getInvalidTransponderNumberError().getText();
+        eventPage.getCancelButtonInEditForm().click();
         Assert.assertEquals("Invalid Transponder number", actual);
     }
 
@@ -346,7 +347,7 @@ public class DriverRegistrationTest {
                 "0123456789 1234567890/321 2345678901");
         eventPage.getNameInTable().click();
         String actual = eventPage.getTransponderFieldInEditForm().getValue();
-        eventPage.getCancelButtonInEditForm().click();
+        eventPage.getCancelButtonInEditForm().scrollTo().click();
         deleteEntry();
         Assert.assertEquals("0123456789 1234567890/321 2345678901", actual);
     }
@@ -360,7 +361,7 @@ public class DriverRegistrationTest {
                 "0123456789 1234567890/321 2345678901 321456/987");
         eventPage.getNameInTable().click();
         String actual = eventPage.getTransponderFieldInEditForm().getValue();
-        eventPage.getCancelButtonInEditForm().click();
+        eventPage.getCancelButtonInEditForm().scrollTo().click();
         deleteEntry();
         Assert.assertEquals("0123456789 1234567890/321 2345678901 321456/987", actual);
     }
@@ -374,7 +375,7 @@ public class DriverRegistrationTest {
                 "0123456789,1234567890/321,2345678901,321456/987");
         eventPage.getNameInTable().click();
         String actual = eventPage.getTransponderFieldInEditForm().getValue();
-        eventPage.getCancelButtonInEditForm().click();
+        eventPage.getCancelButtonInEditForm().scrollTo().click();
         deleteEntry();
         Assert.assertEquals("0123456789 1234567890/321 2345678901 321456/987", actual);
     }
@@ -388,7 +389,7 @@ public class DriverRegistrationTest {
                 "0123456789, 1234567890/321, 2345678901, 321456/987");
         eventPage.getNameInTable().click();
         String actual = eventPage.getTransponderFieldInEditForm().getValue();
-        eventPage.getCancelButtonInEditForm().click();
+        eventPage.getCancelButtonInEditForm().scrollTo().click();
         deleteEntry();
         Assert.assertEquals("0123456789 1234567890/321 2345678901 321456/987", actual);
     }
@@ -402,7 +403,7 @@ public class DriverRegistrationTest {
                 "0123456789;1234567890/321;2345678901;321456/987");
         eventPage.getNameInTable().click();
         String actual = eventPage.getTransponderFieldInEditForm().getValue();
-        eventPage.getCancelButtonInEditForm().click();
+        eventPage.getCancelButtonInEditForm().scrollTo().click();
         deleteEntry();
         Assert.assertEquals("0123456789 1234567890/321 2345678901 321456/987", actual);
     }
@@ -416,7 +417,7 @@ public class DriverRegistrationTest {
                 "0123456789,,,,,     1234567890/321,,,,,     2345678901,,,,,     321456/987");
         eventPage.getNameInTable().click();
         String actual = eventPage.getTransponderFieldInEditForm().getValue();
-        eventPage.getCancelButtonInEditForm().click();
+        eventPage.getCancelButtonInEditForm().scrollTo().click();
         deleteEntry();
         Assert.assertEquals("0123456789 1234567890/321 2345678901 321456/987", actual);
     }
@@ -430,7 +431,7 @@ public class DriverRegistrationTest {
                 " 0123456789,1234567890/321,2345678901,321456/987");
         eventPage.getNameInTable().click();
         String actual = eventPage.getTransponderFieldInEditForm().getValue();
-        eventPage.getCancelButtonInEditForm().click();
+        eventPage.getCancelButtonInEditForm().scrollTo().click();
         deleteEntry();
         Assert.assertEquals("0123456789 1234567890/321 2345678901 321456/987", actual);
     }
@@ -444,7 +445,7 @@ public class DriverRegistrationTest {
                 "0123456789,1234567890/321,2345678901,321456/987  ");
         eventPage.getNameInTable().click();
         String actual = eventPage.getTransponderFieldInEditForm().getValue();
-        eventPage.getCancelButtonInEditForm().click();
+        eventPage.getCancelButtonInEditForm().scrollTo().click();
         deleteEntry();
         Assert.assertEquals("0123456789 1234567890/321 2345678901 321456/987", actual);
     }
@@ -458,7 +459,7 @@ public class DriverRegistrationTest {
                 "0123456789,1234567890/321,2345678901,321456/987,");
         eventPage.getNameInTable().click();
         String actual = eventPage.getTransponderFieldInEditForm().getValue();
-        eventPage.getCancelButtonInEditForm().click();
+        eventPage.getCancelButtonInEditForm().scrollTo().click();
         deleteEntry();
         Assert.assertEquals("0123456789 1234567890/321 2345678901 321456/987", actual);
     }
@@ -472,7 +473,7 @@ public class DriverRegistrationTest {
                 ",0123456789,1234567890/321,2345678901,321456/987");
         eventPage.getNameInTable().click();
         String actual = eventPage.getTransponderFieldInEditForm().getValue();
-        eventPage.getCancelButtonInEditForm().click();
+        eventPage.getCancelButtonInEditForm().scrollTo().click();
         deleteEntry();
         Assert.assertEquals("0123456789 1234567890/321 2345678901 321456/987", actual);
     }
@@ -489,7 +490,7 @@ public class DriverRegistrationTest {
                     "Spain",
                     transponders[i]);
             String actual = eventPage.getErrorTooManyTransponders().getText();
-            eventPage.getCancelButtonInEditForm().click();
+            eventPage.getCancelButtonInEditForm().scrollTo().click();
             Thread.sleep(1000);
             Assert.assertEquals("Too many transponders", actual);
         }
@@ -526,7 +527,7 @@ public class DriverRegistrationTest {
                 "Italy",
                 "123456");
         String actual = eventPage.getErrorTransponderNumberDuplicate().getText();
-        eventPage.getCancelButtonInEditForm().click();
+        eventPage.getCancelButtonInEditForm().scrollTo().click();
         deleteEntry();
         Assert.assertEquals("Transponder number duplicate Fix the Number", actual);
     }
@@ -540,7 +541,7 @@ public class DriverRegistrationTest {
                 "123456 123456");
         eventPage.getNameInTable().click();
         String actual = eventPage.getTransponderFieldInEditForm().getValue();
-        eventPage.getCancelButtonInEditForm().click();
+        eventPage.getCancelButtonInEditForm().scrollTo().click();
         deleteEntry();
         Assert.assertEquals("123456", actual);
     }
@@ -590,7 +591,7 @@ public class DriverRegistrationTest {
         Thread.sleep(3000);
     }
     public static void deleteEntry() {
-        eventPage.getDeleteEntryButton().click();
+        eventPage.getDeleteEntryButton().scrollTo().click();
         Selenide.switchTo().alert().accept();
     }
 
