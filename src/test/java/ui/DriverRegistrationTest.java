@@ -216,7 +216,7 @@ public class DriverRegistrationTest {
         deleteEntry();
         Assert.assertEquals("Carlos Juan-Canas", actual);
     }
-  /*  @Test
+    @Test
     public void registrationMustBeSuccessfulIfLastNameContainsSpase() throws InterruptedException {
         addDriverEntry("Buggy 8 Nitro",
                 "Carlos",
