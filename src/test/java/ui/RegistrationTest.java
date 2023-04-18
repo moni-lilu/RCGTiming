@@ -2,6 +2,7 @@ package ui;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.hamcrest.MatcherAssert;
 import org.junit.*;
 
@@ -134,7 +135,7 @@ public class RegistrationTest {
 
     @Test
     public void shouldTake50SymbolsName() {
-        controller.fullShortRegistrationForm("Billibillibillibillibillibillibillibillibillibilli",
+        controller.fullShortRegistrationForm(generateString(50),
                 userEmail,
                 countryNumber,
                 2,
@@ -145,7 +146,7 @@ public class RegistrationTest {
 
     @Test
     public void shouldNotTake51SymbolsName() {
-        controller.fullShortRegistrationForm("Billibillibillibillibillibillibillibillibillibillib",
+        controller.fullShortRegistrationForm(generateString(51),
                 userEmail,
                 countryNumber,
                 2,
@@ -245,10 +246,10 @@ public class RegistrationTest {
     }
 
     @Test
-    public void shouldSignUpWithFiftyEightSymbolsEmailAddress () {
+    public void shouldSignUpWith58SymbolsEmailAddress () {
 
         controller.fullShortRegistrationForm(name,
-                "testtesttesttesttesttesttesttesttesttesttesttest@gmail.com",
+                generateString(48) + "@gmail.com",
                 countryNumber,
                 2,
                 password,
@@ -258,10 +259,10 @@ public class RegistrationTest {
     }
 
     @Test
-    public void shouldSignUpWithNinetyNineSymbolsEmailAddress () {
+    public void shouldSignUpWith99SymbolsEmailAddress () {
 
         controller.fullShortRegistrationForm(name,
-                "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttestt@gmail.com",
+                generateString(89) + "@gmail.com",
                 countryNumber,
                 2,
                 password,
@@ -270,10 +271,10 @@ public class RegistrationTest {
     }
 
     @Test
-    public void shouldSignUpWithOneHundredSymbolsEmailAddress () {
+    public void shouldSignUpWith100SymbolsEmailAddress () {
 
         controller.fullShortRegistrationForm(name,
-                "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttestte@gmail.com",
+                generateString(90) + "@gmail.com",
                 countryNumber,
                 2,
                 password,
@@ -283,9 +284,9 @@ public class RegistrationTest {
     }
 
     @Test
-    public void shouldReturnErrorEmailAddressLengthForOneHundredAndOneSymbolsEmailAddress () {
+    public void shouldReturnErrorEmailAddressLengthFor101SymbolsEmailAddress () {
         controller.fullShortRegistrationForm(name,
-                "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest@gmail.com",
+                generateString(91) + "@gmail.com",
                 countryNumber,
                 2,
                 password,
@@ -294,10 +295,9 @@ public class RegistrationTest {
     }
 
     @Test
-    public void shouldReturnErrorEmailAddressLengthForOneHundredFiftyFourSymbolsEmailAddress () {
-
+    public void shouldReturnErrorEmailAddressLengthFor154SymbolsEmailAddress () {
         controller.fullShortRegistrationForm(name,
-                "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest@gmail.com",
+                generateString(144) + "@gmail.com",
                 countryNumber,
                 2,
                 password,
@@ -461,6 +461,15 @@ public class RegistrationTest {
         LoginSuccessPage loginSuccessPage = new LoginSuccessPage();
         MatcherAssert.assertThat(loginSuccessPage.getTextCongratulations().getText(), containsString("Congratulations!"));
         userCreated = true;
+    }
+
+    public String generateString(int length) {
+
+        boolean useLetters = true;
+        boolean useNumbers = false;
+        String generatedString = RandomStringUtils.random(length, useLetters, useNumbers);
+
+        return generatedString;
     }
 
 }

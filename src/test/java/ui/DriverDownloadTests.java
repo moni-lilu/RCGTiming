@@ -16,7 +16,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 
-public class DriverDownloadTest {
+public class DriverDownloadTests {
     static Controller controller = new Controller();
     private static MainPage mainPage = new MainPage();
     private static String downloadsFolder = "";
