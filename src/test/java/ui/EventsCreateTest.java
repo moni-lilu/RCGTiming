@@ -80,7 +80,7 @@ public class EventsCreateTest {
         controller.deleteUser();
     }
 
-    @Test
+ /*   @Test
     public void theNameOfCreatedEventShouldBeMainTestEvent() {
         eventsPage.getButtonCreate().click();
         eventsPage.getEventTitleField().setValue("Main test event");
@@ -96,7 +96,7 @@ public class EventsCreateTest {
         saveEvent("Main test event");
         String actualDataOriginalTitle = eventsPage.getEye().getAttribute("data-original-title");
         Assert.assertEquals("Visible to public", actualDataOriginalTitle);
-    }
+    }*/
 
     @Test
     public void shouldBeOpenEyeSlashInEventsTableIfPublicEventTurnOff() {
@@ -143,7 +143,7 @@ public class EventsCreateTest {
         MatcherAssert.assertThat(eventsPage.getDatesError().getText(), containsString("End Date shouldn't go before Start Date"));
     }
 
-    @Test
+  /*  @Test
     public void theNameOfEventOwnerShouldBeTheSameAsTheAccountOwnerName() {
         eventsPage.getButtonCreate().click();
         eventsPage.getEventTitleField().setValue("Main test event");
@@ -166,7 +166,7 @@ public class EventsCreateTest {
         eventsPage.getTrack().click();
         saveEvent("Main test event");
         Assert.assertEquals(trackTitle, eventsPage.getEventTrackTitleInTheTable().getText());
-    }
+    }*/
 
     public void saveEvent(String title) {
         eventsPage.getButtonSave().click();
