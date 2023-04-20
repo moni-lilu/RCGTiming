@@ -15,7 +15,7 @@ import java.util.Date;
 
 import static org.hamcrest.CoreMatchers.containsString;
 
-public class EventsCreateTests {
+public class EventsCreateTest {
 
     static Controller controller = new Controller();
     private static EventsPage eventsPage = new EventsPage();
