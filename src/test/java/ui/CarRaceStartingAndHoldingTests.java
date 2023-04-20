@@ -49,7 +49,7 @@ public class CarRaceStartingAndHoldingTests {
         eventPage.getBuggy8Nitro().click();
         eventPage.getConfirmButtonInAddClassesModalWindow().click();
         eventPage.getDriversTab().click();
-        DriverRegistrationTest.addDriverEntry("Buggy 8 Nitro",
+        DriverRegistrationTestsDone.addDriverEntry("Buggy 8 Nitro",
                 "Carlos",
                 "Canas",
                 "Spain",
