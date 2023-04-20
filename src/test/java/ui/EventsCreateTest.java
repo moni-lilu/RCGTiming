@@ -60,7 +60,7 @@ public class EventsCreateTest {
 
         if (eventCreated) {
             Selenide.open(eventsURL);
-            eventsPage.getButtonDeleteEvent().click();
+            eventsPage.getButtonDeleteEvent().scrollTo().click();
             eventsPage.getCheckConfirmationEventDelete().click();
             eventsPage.getButtonConfirmEventDelete().click();
             eventCreated = false;
