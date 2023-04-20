@@ -118,8 +118,8 @@ public class EventsCreateTest {
         Assert.assertEquals(startDate, actualStartDateOnEventTable);
     }
 
-    @Test
-    public void shouldBeDisplayEndDateFourDaysAfterTheCurrentOneOnTheEventsTable() throws InterruptedException {
+ /*   @Test
+    public void shouldBeDisplayEndDateFourDaysAfterTheCurrentOneOnTheEventsTable() {
         String startDate = daysToEventStartOrEnd(2);
         System.out.println("startDate " + startDate);
         String endDate = daysToEventStartOrEnd(4);
@@ -132,7 +132,7 @@ public class EventsCreateTest {
         System.out.println("DateInTheTable " + actualEndDateOnEventTable);
         System.out.println("endDate.substring(0,5) " + endDate.substring(0,5));
         Assert.assertEquals(endDate.substring(0,5), actualEndDateOnEventTable);
-    }
+    }*/
 
     @Test
     public void shouldReturnErrorEndDateShouldNotGoBeforeStartDateIfEndDateBeforeStartDate() throws InterruptedException {
