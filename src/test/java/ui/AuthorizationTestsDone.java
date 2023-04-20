@@ -10,7 +10,7 @@ import java.io.IOException;
 
 import static org.hamcrest.core.StringContains.containsString;
 
-public class AuthorizationTest {
+public class AuthorizationTestsDone {
 
     static Controller controller = new Controller();
     private String name = "Paulo";
@@ -22,7 +22,7 @@ public class AuthorizationTest {
     Boolean userCreated = false;
 
 
-    public AuthorizationTest() throws Exception {
+    public AuthorizationTestsDone() throws Exception {
     }
 
     @After
