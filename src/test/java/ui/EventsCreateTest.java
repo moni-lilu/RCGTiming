@@ -87,7 +87,7 @@ public class EventsCreateTest {
         saveEvent("Main test event");
         Assert.assertEquals("Main test event", eventsPage.getEventTitleInTheTable().getText());
     }
-
+*/
     @Test
     public void shouldBeOpenEyeInEventsTableIfPublicEventTurnOn() {
         eventsPage.getButtonCreate().click();
@@ -96,7 +96,7 @@ public class EventsCreateTest {
         saveEvent("Main test event");
         String actualDataOriginalTitle = eventsPage.getEye().getAttribute("data-original-title");
         Assert.assertEquals("Visible to public", actualDataOriginalTitle);
-    }*/
+    }
 
     @Test
     public void shouldBeOpenEyeSlashInEventsTableIfPublicEventTurnOff() {
