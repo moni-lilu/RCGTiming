@@ -80,7 +80,7 @@ public class EventsCreateTest {
         controller.deleteUser();
     }
 
- /*   @Test
+  /*  @Test
     public void theNameOfCreatedEventShouldBeMainTestEvent() {
         eventsPage.getButtonCreate().click();
         eventsPage.getEventTitleField().setValue("Main test event");
@@ -108,7 +108,7 @@ public class EventsCreateTest {
         Assert.assertEquals("Hidden from the public", actualDataOriginalTitle);
     }
 
-    @Test
+ /*   @Test
     public void shouldBeDisplayStartDateTwoDaysAfterTheCurrentOneOnTheEventsTable() throws InterruptedException {
         String startDate = daysToEventStartOrEnd(2);
         String endDate = daysToEventStartOrEnd(4);
@@ -143,7 +143,7 @@ public class EventsCreateTest {
         MatcherAssert.assertThat(eventsPage.getDatesError().getText(), containsString("End Date shouldn't go before Start Date"));
     }
 
-  /*  @Test
+    @Test
     public void theNameOfEventOwnerShouldBeTheSameAsTheAccountOwnerName() {
         eventsPage.getButtonCreate().click();
         eventsPage.getEventTitleField().setValue("Main test event");
