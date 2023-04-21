@@ -121,17 +121,17 @@ public class EventsCreateTest {
     @Test
     public void shouldBeDisplayEndDateFourDaysAfterTheCurrentOneOnTheEventsTable() {
         String startDate = daysToEventStartOrEnd(2);
-        System.out.println("startDate " + startDate);
         String endDate = daysToEventStartOrEnd(4);
-        System.out.println("endDate " + endDate);
         createEventIncludingDates("Main test event", startDate, endDate);
-        System.out.println("createEventIncludingDates");
         saveEvent("Main test event");
-        System.out.println("saveEvent");
         String actualEndDateOnEventTable = eventsPage.getEventEndDateInTheTable().getText();
-        System.out.println("DateInTheTable " + actualEndDateOnEventTable);
-        System.out.println("endDate.substring(0,5) " + endDate.substring(0,5));
-        Assert.assertEquals(endDate.substring(0,5), actualEndDateOnEventTable);
+        if (controller.headless) {
+            String day = actualEndDateOnEventTable.substring(0,2);
+            String month = actualEndDateOnEventTable.substring(3,5);
+            actualEndDateOnEventTable = month + "/" + day;
+        }
+        Assert.assertEquals(endDate.substring(0, 5), actualEndDateOnEventTable);
+
     }
 
     @Test
