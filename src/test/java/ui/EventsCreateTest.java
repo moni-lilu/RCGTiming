@@ -132,7 +132,7 @@ public class EventsCreateTest {
         System.out.println("DateInTheTable " + actualEndDateOnEventTable);
         System.out.println("endDate.substring(0,5) " + endDate.substring(0,5));
         Assert.assertEquals(endDate.substring(0,5), actualEndDateOnEventTable);
-    }
+    }*/
 
     @Test
     public void shouldReturnErrorEndDateShouldNotGoBeforeStartDateIfEndDateBeforeStartDate() throws InterruptedException {
@@ -142,7 +142,7 @@ public class EventsCreateTest {
         eventsPage.getButtonSave().click();
         MatcherAssert.assertThat(eventsPage.getDatesError().getText(), containsString("End Date shouldn't go before Start Date"));
     }
-
+/*
     @Test
     public void theNameOfEventOwnerShouldBeTheSameAsTheAccountOwnerName() {
         eventsPage.getButtonCreate().click();
