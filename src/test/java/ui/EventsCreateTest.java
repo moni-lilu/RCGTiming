@@ -129,6 +129,7 @@ public class EventsCreateTest {
         createEventIncludingDates("Main test event", startDate, endDate);
         saveEvent("Main test event");
         String actualEndDateOnEventTable = eventsPage.getEventEndDateInTheTable().getText();
+        System.out.println("headless: " + controller.headless);
         if (controller.headless) {
             Assert.assertEquals(endDate.substring(0, 5), changeDateFormat(actualEndDateOnEventTable));
         } else {
@@ -213,10 +214,12 @@ public class EventsCreateTest {
     }
 
     public String changeDateFormat(String date) {
+        System.out.println("Date before: " + date);
         String day = date.substring(0,2);
         String month = date.substring(3,5);
         date.replace(".", "/");
         date.replace(day + "/" + month, month + "/" + day);
+        System.out.println("Date after: " + date);
         return date;
     }
 
