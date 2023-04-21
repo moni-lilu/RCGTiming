@@ -80,15 +80,15 @@ public class EventsCreateTest {
         controller.deleteUser();
     }
 
-  /*  @Test
+    @Test
     public void theNameOfCreatedEventShouldBeMainTestEvent() {
         eventsPage.getButtonCreate().click();
         eventsPage.getEventTitleField().setValue("Main test event");
         saveEvent("Main test event");
         Assert.assertEquals("Main test event", eventsPage.getEventTitleInTheTable().getText());
     }
-*/
-/*    @Test
+
+    @Test
     public void shouldBeOpenEyeInEventsTableIfPublicEventTurnOn() {
         eventsPage.getButtonCreate().click();
         eventsPage.getEventTitleField().setValue("Main test event");
@@ -106,9 +106,9 @@ public class EventsCreateTest {
         saveEvent("Main test event");
         String actualDataOriginalTitle = eventsPage.getEye().getAttribute("data-original-title");
         Assert.assertEquals("Hidden from the public", actualDataOriginalTitle);
-    }*/
+    }
 
- /*   @Test
+    @Test
     public void shouldBeDisplayStartDateTwoDaysAfterTheCurrentOneOnTheEventsTable() throws InterruptedException {
         String startDate = daysToEventStartOrEnd(2);
         String endDate = daysToEventStartOrEnd(4);
@@ -132,7 +132,7 @@ public class EventsCreateTest {
         System.out.println("DateInTheTable " + actualEndDateOnEventTable);
         System.out.println("endDate.substring(0,5) " + endDate.substring(0,5));
         Assert.assertEquals(endDate.substring(0,5), actualEndDateOnEventTable);
-    }*/
+    }
 
     @Test
     public void shouldReturnErrorEndDateShouldNotGoBeforeStartDateIfEndDateBeforeStartDate() throws InterruptedException {
@@ -142,7 +142,7 @@ public class EventsCreateTest {
         eventsPage.getButtonSave().click();
         MatcherAssert.assertThat(eventsPage.getDatesError().getText(), containsString("End Date shouldn't go before Start Date"));
     }
-/*
+
     @Test
     public void theNameOfEventOwnerShouldBeTheSameAsTheAccountOwnerName() {
         eventsPage.getButtonCreate().click();
@@ -166,7 +166,7 @@ public class EventsCreateTest {
         eventsPage.getTrack().click();
         saveEvent("Main test event");
         Assert.assertEquals(trackTitle, eventsPage.getEventTrackTitleInTheTable().getText());
-    }*/
+    }
 
     public void saveEvent(String title) {
         eventsPage.getButtonSave().click();
