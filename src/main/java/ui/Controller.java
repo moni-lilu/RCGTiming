@@ -37,6 +37,7 @@ public class Controller {
     String userEmail;
     MainPage mainPage = new MainPage();
     CreateAccountPage createAccountPage = new CreateAccountPage();
+    static Boolean headless;
 
   /*  public Controller() {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
@@ -75,7 +76,7 @@ public class Controller {
         downloadsFolderPath = ini.get("configuration", "DownloadsFolderPath");
         testIPForConnection = ini.get("configuration", "IPForConnaction");
         authToken = ini.get("configuration", "AuthorisationToken");
-        Boolean headless = Boolean.valueOf(ini.get("configuration", "Headless"));
+        headless = Boolean.valueOf(ini.get("configuration", "Headless"));
 
 
         System.out.println(urlMainPage);
