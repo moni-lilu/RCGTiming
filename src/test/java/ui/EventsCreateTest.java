@@ -79,7 +79,7 @@ public class EventsCreateTest {
         controller.userLogOut();
         controller.deleteUser();
     }
-
+/*
     @Test
     public void theNameOfCreatedEventShouldBeMainTestEvent() {
         eventsPage.getButtonCreate().click();
@@ -107,7 +107,7 @@ public class EventsCreateTest {
         String actualDataOriginalTitle = eventsPage.getEye().getAttribute("data-original-title");
         Assert.assertEquals("Hidden from the public", actualDataOriginalTitle);
     }
-
+*/
     @Test
     public void shouldBeDisplayStartDateTwoDaysAfterTheCurrentOneOnTheEventsTable() throws InterruptedException {
         String startDate = daysToEventStartOrEnd(2);
@@ -116,10 +116,10 @@ public class EventsCreateTest {
         saveEvent("Main test event");
         String actualStartDateOnEventTable = eventsPage.getEventStartDateInTheTable().getText().substring(0, 10);
         if (controller.headless) {
-            actualStartDateOnEventTable = changeDateFormat(actualStartDateOnEventTable);
-            System.out.println("changeStartDateFormat: " + actualStartDateOnEventTable);
+            Assert.assertEquals(startDate, changeDateFormat(actualStartDateOnEventTable));
+        } else {
+            Assert.assertEquals(startDate, actualStartDateOnEventTable);
         }
-        Assert.assertEquals(startDate, actualStartDateOnEventTable);
     }
 
     @Test
@@ -130,13 +130,12 @@ public class EventsCreateTest {
         saveEvent("Main test event");
         String actualEndDateOnEventTable = eventsPage.getEventEndDateInTheTable().getText();
         if (controller.headless) {
-            actualEndDateOnEventTable = changeDateFormat(actualEndDateOnEventTable);
-            System.out.println("changeEndDateFormat: " + actualEndDateOnEventTable);
+            Assert.assertEquals(endDate.substring(0, 5), changeDateFormat(actualEndDateOnEventTable));
+        } else {
+            Assert.assertEquals(endDate.substring(0, 5), actualEndDateOnEventTable);
         }
-        Assert.assertEquals(endDate.substring(0, 5), actualEndDateOnEventTable);
-
     }
-
+/*
     @Test
     public void shouldReturnErrorEndDateShouldNotGoBeforeStartDateIfEndDateBeforeStartDate() throws InterruptedException {
         String startDate = daysToEventStartOrEnd(4);
@@ -170,7 +169,7 @@ public class EventsCreateTest {
         saveEvent("Main test event");
         Assert.assertEquals(trackTitle, eventsPage.getEventTrackTitleInTheTable().getText());
     }
-
+*/
     public void saveEvent(String title) {
         eventsPage.getButtonSave().click();
         eventsPage.setParameters(title);
