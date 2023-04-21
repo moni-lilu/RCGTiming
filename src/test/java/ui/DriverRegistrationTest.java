@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import static com.codeborne.selenide.WebDriverRunner.url;
 
-public class DriverRegistrationTestsDone {
+public class DriverRegistrationTest {
 
     static Controller controller = new Controller();
     private static MainPage mainPage = new MainPage();
