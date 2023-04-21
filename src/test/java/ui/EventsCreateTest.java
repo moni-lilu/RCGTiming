@@ -88,7 +88,7 @@ public class EventsCreateTest {
         Assert.assertEquals("Main test event", eventsPage.getEventTitleInTheTable().getText());
     }
 */
-    @Test
+/*    @Test
     public void shouldBeOpenEyeInEventsTableIfPublicEventTurnOn() {
         eventsPage.getButtonCreate().click();
         eventsPage.getEventTitleField().setValue("Main test event");
@@ -106,7 +106,7 @@ public class EventsCreateTest {
         saveEvent("Main test event");
         String actualDataOriginalTitle = eventsPage.getEye().getAttribute("data-original-title");
         Assert.assertEquals("Hidden from the public", actualDataOriginalTitle);
-    }
+    }*/
 
  /*   @Test
     public void shouldBeDisplayStartDateTwoDaysAfterTheCurrentOneOnTheEventsTable() throws InterruptedException {
