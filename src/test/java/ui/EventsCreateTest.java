@@ -115,6 +115,10 @@ public class EventsCreateTest {
         createEventIncludingDates("Main test event", startDate, endDate);
         saveEvent("Main test event");
         String actualStartDateOnEventTable = eventsPage.getEventStartDateInTheTable().getText().substring(0, 10);
+        if (controller.headless) {
+            actualStartDateOnEventTable = changeDateFormat(actualStartDateOnEventTable);
+            System.out.println("changeStartDateFormat: " + actualStartDateOnEventTable);
+        }
         Assert.assertEquals(startDate, actualStartDateOnEventTable);
     }
 
@@ -126,9 +130,8 @@ public class EventsCreateTest {
         saveEvent("Main test event");
         String actualEndDateOnEventTable = eventsPage.getEventEndDateInTheTable().getText();
         if (controller.headless) {
-            String day = actualEndDateOnEventTable.substring(0,2);
-            String month = actualEndDateOnEventTable.substring(3,5);
-            actualEndDateOnEventTable = month + "/" + day;
+            actualEndDateOnEventTable = changeDateFormat(actualEndDateOnEventTable);
+            System.out.println("changeEndDateFormat: " + actualEndDateOnEventTable);
         }
         Assert.assertEquals(endDate.substring(0, 5), actualEndDateOnEventTable);
 
@@ -208,6 +211,14 @@ public class EventsCreateTest {
         tracksPage.getButtonConfirm().click();
         trackCreated = true;
         Thread.sleep(2000);
+    }
+
+    public String changeDateFormat(String date) {
+        String day = date.substring(0,2);
+        String month = date.substring(3,5);
+        date.replace(".", "/");
+        date.replace(day + "/" + month, month + "/" + day);
+        return date;
     }
 
 }
