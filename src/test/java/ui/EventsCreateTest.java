@@ -217,10 +217,11 @@ public class EventsCreateTest {
         System.out.println("Date before: " + date);
         String day = date.substring(0,2);
         String month = date.substring(3,5);
+        String newDate = date.replace(".", "/").replace(day + "/" + month, month + "/" + day);
         date.replace(".", "/");
         date.replace(day + "/" + month, month + "/" + day);
-        System.out.println("Date after: " + date);
-        return date;
+        System.out.println("Date after: " + newDate);
+        return newDate;
     }
 
 }
