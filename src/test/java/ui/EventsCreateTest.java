@@ -79,7 +79,7 @@ public class EventsCreateTest {
         controller.userLogOut();
         controller.deleteUser();
     }
-/*
+
     @Test
     public void theNameOfCreatedEventShouldBeMainTestEvent() {
         eventsPage.getButtonCreate().click();
@@ -107,7 +107,7 @@ public class EventsCreateTest {
         String actualDataOriginalTitle = eventsPage.getEye().getAttribute("data-original-title");
         Assert.assertEquals("Hidden from the public", actualDataOriginalTitle);
     }
-*/
+
     @Test
     public void shouldBeDisplayStartDateTwoDaysAfterTheCurrentOneOnTheEventsTable() throws InterruptedException {
         String startDate = daysToEventStartOrEnd(2);
@@ -129,14 +129,13 @@ public class EventsCreateTest {
         createEventIncludingDates("Main test event", startDate, endDate);
         saveEvent("Main test event");
         String actualEndDateOnEventTable = eventsPage.getEventEndDateInTheTable().getText();
-        System.out.println("headless: " + controller.headless);
         if (controller.headless) {
             Assert.assertEquals(endDate.substring(0, 5), changeDateFormat(actualEndDateOnEventTable));
         } else {
             Assert.assertEquals(endDate.substring(0, 5), actualEndDateOnEventTable);
         }
     }
-/*
+
     @Test
     public void shouldReturnErrorEndDateShouldNotGoBeforeStartDateIfEndDateBeforeStartDate() throws InterruptedException {
         String startDate = daysToEventStartOrEnd(4);
@@ -170,7 +169,7 @@ public class EventsCreateTest {
         saveEvent("Main test event");
         Assert.assertEquals(trackTitle, eventsPage.getEventTrackTitleInTheTable().getText());
     }
-*/
+
     public void saveEvent(String title) {
         eventsPage.getButtonSave().click();
         eventsPage.setParameters(title);
@@ -214,13 +213,9 @@ public class EventsCreateTest {
     }
 
     public String changeDateFormat(String date) {
-        System.out.println("Date before: " + date);
         String day = date.substring(0,2);
         String month = date.substring(3,5);
         String newDate = date.replace(".", "/").replace(day + "/" + month, month + "/" + day);
-        date.replace(".", "/");
-        date.replace(day + "/" + month, month + "/" + day);
-        System.out.println("Date after: " + newDate);
         return newDate;
     }
 
