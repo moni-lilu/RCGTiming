@@ -136,7 +136,7 @@ public class EventsCreateTest {
 
     @Test
     public void shouldReturnErrorEndDateShouldNotGoBeforeStartDateIfEndDateBeforeStartDate() throws InterruptedException {
-        String startDate = "22/04/2023"/*daysToEventStartOrEnd(4)*/;
+        String startDate = "2023-04-22"/*daysToEventStartOrEnd(4)*/;
         String endDate = daysToEventStartOrEnd(2);
         createEventIncludingDates("Main test event", startDate, endDate);
         eventsPage.getButtonSave().click();
@@ -175,6 +175,12 @@ public class EventsCreateTest {
     }
 
     public String daysToEventStartOrEnd (int daysCount) {
+        /*DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        Date currentDate = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(currentDate);
+        c.add(Calendar.DATE, daysCount);
+        return dateFormat.format(c.getTime());*/
         DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         Date currentDate = new Date();
         Calendar c = Calendar.getInstance();
