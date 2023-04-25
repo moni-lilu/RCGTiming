@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import static com.codeborne.selenide.WebDriverRunner.url;
 
-public class CarRaceStartingAndHoldingTest {
+public class CarRaceStartingAndHoldingTestsS {
     private static final String eventsURL = "https://stage.rcgtiming.com/Timing/Competitions";
     private static final String mainURL = "https://stage.rcgtiming.com/";
     static Controller controller = new Controller();
@@ -49,7 +49,7 @@ public class CarRaceStartingAndHoldingTest {
         eventPage.getBuggy8Nitro().click();
         eventPage.getConfirmButtonInAddClassesModalWindow().click();
         eventPage.getDriversTab().click();
-        DriverRegistrationTest.addDriverEntry("Buggy 8 Nitro",
+        DriverRegistrationTestsS.addDriverEntry("Buggy 8 Nitro",
                 "Carlos",
                 "Canas",
                 "Spain",

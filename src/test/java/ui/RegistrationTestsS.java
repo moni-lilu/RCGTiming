@@ -9,7 +9,7 @@ import org.junit.*;
 
 import static org.hamcrest.CoreMatchers.containsString;
 
-public class RegistrationTest {
+public class RegistrationTestsS {
 
     static Controller controller;
     public static String urlMainPage = "";
