@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import static com.codeborne.selenide.WebDriverRunner.url;
 
-public class CarRaceStartingAndHoldingTests {
+public class CarRaceStartingAndHoldingTest {
     private static final String eventsURL = "https://stage.rcgtiming.com/Timing/Competitions";
     private static final String mainURL = "https://stage.rcgtiming.com/";
     static Controller controller = new Controller();
