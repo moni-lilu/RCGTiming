@@ -84,7 +84,7 @@ public class CarRaceStartingAndHoldingTestsS {
     @AfterClass
     public static void userAndEventDeletion() throws InterruptedException {
         Selenide.open(eventsURL);
-        controller.eventDelete();
+        controller.eventDelete(eventName);
         Selenide.open(mainURL);
         controller.userLogOut();
         controller.deleteUser();

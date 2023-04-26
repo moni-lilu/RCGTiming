@@ -55,7 +55,7 @@ public class DriverRegistrationTestsS {
 
     @AfterClass
     public static void userAndEventDeletion() throws InterruptedException {
-        controller.eventDelete();
+        controller.eventDelete(eventName);
         Selenide.open("https://stage.rcgtiming.com/");
         controller.userLogOut();
         controller.deleteUser();

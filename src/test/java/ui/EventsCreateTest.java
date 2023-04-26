@@ -15,7 +15,7 @@ import java.util.Date;
 
 import static org.hamcrest.CoreMatchers.containsString;
 
-public class EventsCreateTestsS {
+public class EventsCreateTest {
 
     static Controller controller = new Controller();
     private static EventsPage eventsPage = new EventsPage();
@@ -24,6 +24,7 @@ public class EventsCreateTestsS {
     private static SettingsPage settingsPage = new SettingsPage();
     private static String tracksURL = "https://stage.rcgtiming.com/Timing/Tracks";
     private static String eventsURL = "https://stage.rcgtiming.com/Timing/Competitions";
+    private String eventName = "";
     private static String settingsURL = "https://stage.rcgtiming.com/Settings";
 
     private static String userName = RandomStringUtils.randomAlphabetic(10);
@@ -53,6 +54,7 @@ public class EventsCreateTestsS {
     @Before
     public void openEventsPage() {
         Selenide.open(eventsURL);
+        eventName = "Main test event";
     }
 
     @After
@@ -60,7 +62,7 @@ public class EventsCreateTestsS {
 
         if (eventCreated) {
             Selenide.open(eventsURL);
-            eventsPage.getButtonDeleteEvent().scrollTo().click();
+            eventsPage.getButtonDeleteEvent(eventName).scrollTo().click();
             eventsPage.getCheckConfirmationEventDelete().click();
             eventsPage.getButtonConfirmEventDelete().click();
             eventCreated = false;
@@ -83,17 +85,17 @@ public class EventsCreateTestsS {
     @Test
     public void theNameOfCreatedEventShouldBeMainTestEvent() {
         eventsPage.getButtonCreate().click();
-        eventsPage.getEventTitleField().setValue("Main test event");
-        saveEvent("Main test event");
-        Assert.assertEquals("Main test event", eventsPage.getEventTitleInTheTable().getText());
+        eventsPage.getEventTitleField().setValue(eventName);
+        saveEvent(eventName);
+        Assert.assertEquals(eventName, eventsPage.getEventTitleInTheTable().getText());
     }
 
     @Test
     public void shouldBeOpenEyeInEventsTableIfPublicEventTurnOn() {
         eventsPage.getButtonCreate().click();
-        eventsPage.getEventTitleField().setValue("Main test event");
+        eventsPage.getEventTitleField().setValue(eventName);
         eventsPage.getCheckPublicEvent().shouldHave(Condition.checked);
-        saveEvent("Main test event");
+        saveEvent(eventName);
         String actualDataOriginalTitle = eventsPage.getEye().getAttribute("data-original-title");
         Assert.assertEquals("Visible to public", actualDataOriginalTitle);
     }
@@ -101,9 +103,9 @@ public class EventsCreateTestsS {
     @Test
     public void shouldBeOpenEyeSlashInEventsTableIfPublicEventTurnOff() {
         eventsPage.getButtonCreate().click();
-        eventsPage.getEventTitleField().setValue("Main test event");
+        eventsPage.getEventTitleField().setValue(eventName);
         eventsPage.getCheckPublicEvent().shouldHave(Condition.checked).click();
-        saveEvent("Main test event");
+        saveEvent(eventName);
         String actualDataOriginalTitle = eventsPage.getEye().getAttribute("data-original-title");
         Assert.assertEquals("Hidden from the public", actualDataOriginalTitle);
     }
@@ -112,8 +114,8 @@ public class EventsCreateTestsS {
     public void shouldBeDisplayStartDateTwoDaysAfterTheCurrentOneOnTheEventsTable() throws InterruptedException {
         String startDate = daysToEventStartOrEnd(2);
         String endDate = daysToEventStartOrEnd(4);
-        createEventIncludingDates("Main test event", startDate, endDate);
-        saveEvent("Main test event");
+        createEventIncludingDates(eventName, startDate, endDate);
+        saveEvent(eventName);
         String actualStartDateOnEventTable = eventsPage.getEventStartDateInTheTable().getText().substring(0, 10);
         if (controller.headless) {
             Assert.assertEquals(startDate, changeDateFormat(actualStartDateOnEventTable));
@@ -126,8 +128,8 @@ public class EventsCreateTestsS {
     public void shouldBeDisplayEndDateFourDaysAfterTheCurrentOneOnTheEventsTable() {
         String startDate = daysToEventStartOrEnd(2);
         String endDate = daysToEventStartOrEnd(4);
-        createEventIncludingDates("Main test event", startDate, endDate);
-        saveEvent("Main test event");
+        createEventIncludingDates(eventName, startDate, endDate);
+        saveEvent(eventName);
         String actualEndDateOnEventTable = eventsPage.getEventEndDateInTheTable().getText();
         if (controller.headless) {
             Assert.assertEquals(endDate.substring(0, 5), changeDateFormat(actualEndDateOnEventTable));
@@ -140,7 +142,7 @@ public class EventsCreateTestsS {
     public void shouldReturnErrorEndDateShouldNotGoBeforeStartDateIfEndDateBeforeStartDate() throws InterruptedException {
         String startDate = daysToEventStartOrEnd(4);
         String endDate = daysToEventStartOrEnd(2);
-        createEventIncludingDates("Main test event", startDate, endDate);
+        createEventIncludingDates(eventName, startDate, endDate);
         eventsPage.getButtonSave().click();
         MatcherAssert.assertThat(eventsPage.getDatesError().getText(), containsString("End Date shouldn't go before Start Date"));
     }
@@ -148,8 +150,8 @@ public class EventsCreateTestsS {
     @Test
     public void theNameOfEventOwnerShouldBeTheSameAsTheAccountOwnerName() {
         eventsPage.getButtonCreate().click();
-        eventsPage.getEventTitleField().setValue("Main test event");
-        saveEvent("Main test event");
+        eventsPage.getEventTitleField().setValue(eventName);
+        saveEvent(eventName);
         Assert.assertEquals(userName, eventsPage.getEventOwnerInTheTable().getText());
     }
 
@@ -163,10 +165,10 @@ public class EventsCreateTestsS {
     @Test
     public void shouldDisplayedTrackNameIfTrackNameWasSelectedInEventForm() {
         eventsPage.getButtonCreate().click();
-        eventsPage.getEventTitleField().setValue("Main test event");
+        eventsPage.getEventTitleField().setValue(eventName);
         eventsPage.getEventTrackField().click();
         eventsPage.getTrack().click();
-        saveEvent("Main test event");
+        saveEvent(eventName);
         Assert.assertEquals(trackTitle, eventsPage.getEventTrackTitleInTheTable().getText());
     }
 

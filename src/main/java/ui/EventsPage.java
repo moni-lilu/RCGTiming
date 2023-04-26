@@ -11,7 +11,7 @@ public class EventsPage {
     public String eventTitleField = "//input[@name='title']";
     public String eventTrackField = "(//form[@role='competition-edit']//a[@href='javascript:void(0)'])[1]";
     public String buttonSave = "//button[text()='Save']";
-    public String buttonDeleteEvent = "//button[@data-original-title='Delete']";
+    public String buttonDeleteEvent = "";//"//button[@data-original-title='Delete']";
     public String checkConfirmationEventDelete = "//input[@class='confirmation-check']";
     public String buttonConfirmEventDelete = "(//button[text()='Confirm'])[3]";
     public String checkPublicEvent = "//form[@role='competition-edit']//input[@name='public']";
@@ -76,7 +76,8 @@ public class EventsPage {
         return $(byXpath(eventOwnerInTheTable)).shouldHave(Condition.visible);
     }
 
-    public SelenideElement getButtonDeleteEvent() {
+    public SelenideElement getButtonDeleteEvent(String eventName) {
+        buttonDeleteEvent = "//a[contains(text(), '" + eventName + "')]/parent::*/following-sibling::*/button[@data-original-title='Delete']";
         return $(byXpath(buttonDeleteEvent)).shouldHave(Condition.visible);
     }
 

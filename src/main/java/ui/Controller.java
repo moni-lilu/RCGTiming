@@ -194,9 +194,9 @@ public class Controller {
         Thread.sleep(3000);
     }
 
-    public void eventDelete() {
+    public void eventDelete(String eventName) {
         Selenide.open(eventsURL);
-        eventsPage.getButtonDeleteEvent().click();
+        eventsPage.getButtonDeleteEvent(eventName).click();
         eventsPage.getCheckConfirmationEventDelete().click();
         eventsPage.getButtonConfirmEventDelete().click();
     }
