@@ -151,6 +151,7 @@ public class Controller {
         String href = ReadEmail.getActivateHref(userEmail);
         if (!href.isEmpty()) {
             Selenide.open(href);
+            System.out.println("Activate");
         }
     }
 
@@ -183,7 +184,9 @@ public class Controller {
 
     public void eventCreation(String eventName) throws InterruptedException {
         Selenide.open(eventsURL);
+        System.out.println("Open Event page");
         eventsPage.getButtonCreate().click();
+        System.out.println("Open Create Event page");
         eventsPage.getEventTitleField().setValue(eventName);
         eventsPage.getButtonSave().click();
         eventsPage.setParameters(eventName);
