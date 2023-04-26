@@ -5,10 +5,8 @@ import com.google.gson.Gson;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import jdk.jfr.Description;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
+
 import static io.restassured.RestAssured.given;
 
 public class ResultsTest {
@@ -30,6 +28,10 @@ public class ResultsTest {
         Selenide.open("https://stage.rcgtiming.com/Timing/Competition?id=385#format");
     }
 
+    @AfterClass
+    public static void adminExit() throws InterruptedException {
+        controller.adminLogOut();
+    }
 
     @Test
     @DisplayName("Get status code")

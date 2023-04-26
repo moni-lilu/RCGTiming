@@ -37,6 +37,7 @@ public class Controller {
     String userEmail;
     MainPage mainPage = new MainPage();
     CreateAccountPage createAccountPage = new CreateAccountPage();
+    AdminPanelPage adminPanelPage = new AdminPanelPage();
     static Boolean headless;
 
   /*  public Controller() {
@@ -172,14 +173,15 @@ public class Controller {
         mainPage.getFieldEmailAddressInSignInWindow().setValue(adminEmail);
         mainPage.getFieldPasswordInSignInWindow().setValue(adminPass);
         mainPage.getButtonSignInInSignInWindow().click();
-        AdminPanelPage adminPanelPage = new AdminPanelPage();
+
         adminPanelPage.getMenuItemUsers().click();
         adminPanelPage.getButtonDeleteTopUser().click();
         adminPanelPage.getButtonUserDeleteConfirmation().click();
-        adminPanelPage.getMenuAdmin().click();
+        adminLogOut();
+        /*adminPanelPage.getMenuAdmin().click();
         Thread.sleep(500);
         adminPanelPage.getMenuItemExit().click();
-        Thread.sleep(500);
+        Thread.sleep(500);*/
         mainPage.getButtonSignIn();
     }
 
@@ -197,6 +199,13 @@ public class Controller {
         eventsPage.getButtonDeleteEvent().click();
         eventsPage.getCheckConfirmationEventDelete().click();
         eventsPage.getButtonConfirmEventDelete().click();
+    }
+
+    public void adminLogOut() throws InterruptedException {
+        adminPanelPage.getMenuAdmin().click();
+        Thread.sleep(500);
+        adminPanelPage.getMenuItemExit().click();
+        Thread.sleep(500);
     }
 
 }
