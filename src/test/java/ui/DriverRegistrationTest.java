@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import static com.codeborne.selenide.WebDriverRunner.url;
 
-public class DriverRegistrationTestsS {
+public class DriverRegistrationTest {
 
     static Controller controller = new Controller();
     private static MainPage mainPage = new MainPage();
@@ -40,6 +40,7 @@ public class DriverRegistrationTestsS {
         controller.userSignIn("july.luna.m+maintest@gmail.com", password);
         mainPage.getEventsButton().click();*/
 // --------------------
+        System.out.println("eventName - " + eventName);
         controller.eventCreation(eventName);
         controller.eventsPage.getEventTitleInTheTable().click();
         event = url() + "#drivers";

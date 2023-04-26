@@ -178,10 +178,6 @@ public class Controller {
         adminPanelPage.getButtonDeleteTopUser().click();
         adminPanelPage.getButtonUserDeleteConfirmation().click();
         adminLogOut();
-        /*adminPanelPage.getMenuAdmin().click();
-        Thread.sleep(500);
-        adminPanelPage.getMenuItemExit().click();
-        Thread.sleep(500);*/
         mainPage.getButtonSignIn();
     }
 
