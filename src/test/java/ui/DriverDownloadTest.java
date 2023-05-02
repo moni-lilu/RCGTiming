@@ -308,19 +308,24 @@ public class DriverDownloadTest {
             zipContent.put("phpFolder", false);
 
         File storage = new File(downloadsFolder);
-        String archiveFolderName = "";
-        if(storage.isDirectory())
-        {
-            // получаем все вложенные объекты в каталоге
-            for(File item : storage.listFiles()){
-                archiveFolderName = item.getName();
-            }
+        String pathToZip = "";
+        if (controller.headless) {
+            pathToZip = downloadsFolder;
         } else {
-            System.out.println("Нужно написать вторую ветку");
-        }
-        File archiveFolder = new File(downloadsFolder + "//" + archiveFolderName);
+            String archiveFolderName = "";
+            if (storage.isDirectory()) {
+                // получаем все вложенные объекты в каталоге
+                for (File item : storage.listFiles()) {
+                    archiveFolderName = item.getName();
+                }
+            }
 
-        try(ZipInputStream zin = new ZipInputStream(new FileInputStream(downloadsFolder + "//" + archiveFolderName + "//rcgtiming.zip")))
+            pathToZip = downloadsFolder + "//" + archiveFolderName;
+        }
+
+        File archiveFolder = new File(pathToZip);
+
+        try(ZipInputStream zin = new ZipInputStream(new FileInputStream(pathToZip + "//rcgtiming.zip")))
         {
             ZipEntry entry;
             String name;
