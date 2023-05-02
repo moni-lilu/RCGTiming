@@ -23,7 +23,7 @@ public class DriverDownloadTest {
     private static String userName = RandomStringUtils.randomAlphabetic(10);
     private static String userEmail;
     private static String password = "123456789a";
-
+    String pathToZip = "";
     @BeforeClass
     public static void userCreation() throws InterruptedException, MessagingException, IOException {
 
@@ -308,7 +308,7 @@ public class DriverDownloadTest {
             zipContent.put("phpFolder", false);
 
         File storage = new File(downloadsFolder);
-        String pathToZip = "";
+
         if (controller.headless) {
             pathToZip = downloadsFolder;
         } else {
@@ -353,7 +353,12 @@ public class DriverDownloadTest {
         catch(Exception ex){
             System.out.println(ex.getMessage());
         }
-        deleteDownloadedFolder(archiveFolder);
+        if (controller.headless) {
+            FileUtils.delete(new File(pathToZip + "//rcgtiming.zip"));
+        } else {
+            FileUtils.deleteDirectory(archiveFolder);
+        }
+        //deleteDownloadedFolder(archiveFolder);
 
         return zipContent;
     }
@@ -467,7 +472,7 @@ public class DriverDownloadTest {
     }
 
     public void deleteDownloadedFolder(File archiveFolder) throws IOException {
-        FileUtils.deleteDirectory(archiveFolder);
+            FileUtils.deleteDirectory(archiveFolder);
     }
 
     private static String stringWhichStartsWithPointBackSlashPHPFromFile(String path) throws Exception {
