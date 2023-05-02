@@ -63,7 +63,7 @@ public class DriverDownloadTest {
         Assert.assertEquals(fullPackage, archiveContains());
     }
 
-/*    @Test
+    @Test
     public void configurationUpdateZipShouldContainsConfigFolder() throws InterruptedException, IOException {
 
         downloadPackage("", "", "", "Configuration Update");
@@ -222,7 +222,7 @@ public class DriverDownloadTest {
     public void fileShouldNotExecutedIfWrongToken() throws Exception {
         Assert.assertEquals("Bad access credentials. Please contact RCGTiming support.", fileExecute(false));
     }
-*/
+
     public String fileExecute(boolean tokenCorrect) throws Exception {
         String url = controller.getUrl();
         String ip = controller.getTestIPForConnection();
