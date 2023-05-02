@@ -9,7 +9,7 @@ import org.junit.*;
 
 import static io.restassured.RestAssured.given;
 
-public class ResultsTest {
+public class ResultsTests {
 
     FormatPage formatPage = new FormatPage();
     static Controller controller = new Controller();
