@@ -62,7 +62,7 @@ public class DriverDownloadTest {
 
         Assert.assertEquals(fullPackage, archiveContains());
     }
-/*
+
     @Test
     public void configurationUpdateZipShouldContainsConfigFolder() throws InterruptedException, IOException {
 
@@ -77,7 +77,7 @@ public class DriverDownloadTest {
 
         Assert.assertEquals(configurationUpdate, archiveContains());
     }
-
+/*
     @Test
     public void driverUpdateZipShouldContainsDebugFileDriverFileStartFile() throws InterruptedException, IOException {
 
