@@ -315,6 +315,8 @@ public class DriverDownloadTest {
             for(File item : storage.listFiles()){
                 archiveFolderName = item.getName();
             }
+        } else {
+            System.out.println("Нужно написать вторую ветку");
         }
         File archiveFolder = new File(downloadsFolder + "//" + archiveFolderName);
 
