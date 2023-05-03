@@ -47,7 +47,7 @@ public class DriverDownloadTest {
         controller.userLogOut();
         controller.deleteUser();
     }
-/*
+
     @Test
     public void fullPackageZipShouldContainsConfigFolderPhpFolderDebugFileDriverFileStartFile() throws InterruptedException, IOException {
 
@@ -61,7 +61,7 @@ public class DriverDownloadTest {
             fullPackage.put("phpFolder", true);
 
         Assert.assertEquals(fullPackage, archiveContains());
-    }*/
+    }
 
     @Test
     public void configurationUpdateZipShouldContainsConfigFolder() throws InterruptedException, IOException {
