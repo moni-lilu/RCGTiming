@@ -354,7 +354,7 @@ public class DriverDownloadTest {
             System.out.println(ex.getMessage());
         }
         if (controller.headless) {
-            FileUtils.delete(new File(pathToZip + "//rcgtiming.zip"));
+            //FileUtils.delete(new File(pathToZip + "//rcgtiming.zip"));
         } else {
             FileUtils.deleteDirectory(archiveFolder);
         }
