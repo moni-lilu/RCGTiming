@@ -77,7 +77,7 @@ public class DriverDownloadTest {
 
         Assert.assertEquals(configurationUpdate, archiveContains());
     }
-/*
+
     @Test
     public void driverUpdateZipShouldContainsDebugFileDriverFileStartFile() throws InterruptedException, IOException {
 
@@ -221,7 +221,7 @@ public class DriverDownloadTest {
     @Test
     public void fileShouldNotExecutedIfWrongToken() throws Exception {
         Assert.assertEquals("Bad access credentials. Please contact RCGTiming support.", fileExecute(false));
-    }*/
+    }
 
     public String fileExecute(boolean tokenCorrect) throws Exception {
         String url = controller.getUrl();
