@@ -309,9 +309,9 @@ public class DriverDownloadTest {
 
         File storage = new File(downloadsFolder);
 
-        if (controller.headless) {
+        /*if (controller.headless) {
             pathToZip = downloadsFolder;
-        } else {
+        } else {*/
             String archiveFolderName = "";
             if (storage.isDirectory()) {
                 // получаем все вложенные объекты в каталоге
@@ -321,7 +321,7 @@ public class DriverDownloadTest {
             }
 
             pathToZip = downloadsFolder + "//" + archiveFolderName;
-        }
+        //}
 
         File archiveFolder = new File(pathToZip);
 
@@ -353,12 +353,12 @@ public class DriverDownloadTest {
         catch(Exception ex){
             System.out.println(ex.getMessage());
         }
-        if (controller.headless) {
+     /*   if (controller.headless) {
             //FileUtils.delete(new File(pathToZip + "//rcgtiming.zip"));
         } else {
             FileUtils.deleteDirectory(archiveFolder);
-        }
-        //deleteDownloadedFolder(archiveFolder);
+        }*/
+        deleteDownloadedFolder(archiveFolder);
 
         return zipContent;
     }
