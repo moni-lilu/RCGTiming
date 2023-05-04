@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import static com.codeborne.selenide.WebDriverRunner.url;
 
-public class DriverRegistrationTests {
+public class DriverRegistrationTest {
 
     static Controller controller = new Controller();
     private static MainPage mainPage = new MainPage();
@@ -35,12 +35,6 @@ public class DriverRegistrationTests {
                 password
         );
         controller.activateAccount();
-// для отладки
- /*       Selenide.open("https://rcgt:forthewin@stage.rcgtiming.com/");
-        controller.userSignIn("july.luna.m+maintest@gmail.com", password);
-        mainPage.getEventsButton().click();*/
-// --------------------
-        System.out.println("eventName - " + eventName);
         controller.eventCreation(eventName);
         controller.eventsPage.getEventTitleInTheTable().click();
         event = url() + "#drivers";
@@ -142,7 +136,6 @@ public class DriverRegistrationTests {
         Assert.assertEquals("", actual);
     }
 
-    //!!!!!!!!!
     @Test
     public void shouldReturnErrorInvalidOrEmptySectionIfClassWasNotSelectedAndSaveWasPressed() {
         eventPage.getAddDriverEntryButton().click();
@@ -464,7 +457,7 @@ public class DriverRegistrationTests {
         deleteEntry();
         Assert.assertEquals("0123456789 1234567890/321 2345678901 321456/987", actual);
     }
-//!!!!!!!!!!!
+
     @Test
     public void registrationShouldBeSuccessfulIfTheStartingOfTheTransponderStringContainsComma() throws InterruptedException {
         addDriverEntry("Buggy 8 Nitro",

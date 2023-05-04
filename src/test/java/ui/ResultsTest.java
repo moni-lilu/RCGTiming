@@ -9,7 +9,7 @@ import org.junit.*;
 
 import static io.restassured.RestAssured.given;
 
-public class ResultsTests {
+public class ResultsTest {
 
     FormatPage formatPage = new FormatPage();
     static Controller controller = new Controller();
@@ -120,9 +120,8 @@ public class ResultsTests {
                 .header("Accept", "application/json")
                 .get("/API/CompetitionRaceResults?id=1835")
                 .body().as(Data.class);
-        Gson gson = new Gson();
-        String json = gson.toJson(data);
-        //System.out.println("json: " + json);
+        /*Gson gson = new Gson();
+        String json = gson.toJson(data);*/
         return data;
     }
 

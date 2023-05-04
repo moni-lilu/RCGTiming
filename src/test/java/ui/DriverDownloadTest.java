@@ -212,15 +212,19 @@ public class DriverDownloadTest {
         deleteDownloadedFolder(new File(archiveFolderPath));
         Assert.assertEquals("XXX5", configData.get("port"));
     }
-// для проведения следующих двух тест-кейсов необходимо запустить эмулятор
+// для проведения следующих двух тест-кейсов необходимо запустить эмулятор (только для Windows)
     @Test
     public void fileShouldExecuted() throws Exception {
-        Assert.assertEquals("Internet connection OK. Working online.", fileExecute(true));
+        if (!controller.headless) {
+            Assert.assertEquals("Internet connection OK. Working online.", fileExecute(true));
+        }
     }
 
     @Test
     public void fileShouldNotExecutedIfWrongToken() throws Exception {
-        Assert.assertEquals("Bad access credentials. Please contact RCGTiming support.", fileExecute(false));
+        if (!controller.headless) {
+            Assert.assertEquals("Bad access credentials. Please contact RCGTiming support.", fileExecute(false));
+        }
     }
 
     public String fileExecute(boolean tokenCorrect) throws Exception {
@@ -309,19 +313,15 @@ public class DriverDownloadTest {
 
         File storage = new File(downloadsFolder);
 
-        /*if (controller.headless) {
-            pathToZip = downloadsFolder;
-        } else {*/
-            String archiveFolderName = "";
-            if (storage.isDirectory()) {
-                // получаем все вложенные объекты в каталоге
-                for (File item : storage.listFiles()) {
-                    archiveFolderName = item.getName();
-                }
+        String archiveFolderName = "";
+        if (storage.isDirectory()) {
+            // получаем все вложенные объекты в каталоге
+            for (File item : storage.listFiles()) {
+                archiveFolderName = item.getName();
             }
+        }
 
-            pathToZip = downloadsFolder + "//" + archiveFolderName;
-        //}
+        pathToZip = downloadsFolder + "//" + archiveFolderName;
 
         File archiveFolder = new File(pathToZip);
 
@@ -353,13 +353,8 @@ public class DriverDownloadTest {
         catch(Exception ex){
             System.out.println(ex.getMessage());
         }
-     /*   if (controller.headless) {
-            //FileUtils.delete(new File(pathToZip + "//rcgtiming.zip"));
-        } else {
-            FileUtils.deleteDirectory(archiveFolder);
-        }*/
-        deleteDownloadedFolder(archiveFolder);
 
+        deleteDownloadedFolder(archiveFolder);
         return zipContent;
     }
 
@@ -455,9 +450,7 @@ public class DriverDownloadTest {
         ) {
             String uncompressedFileName = uncompressedDirectory + entry.getName();
             File x = new File(uncompressedFileName);
-
             File dir = new File(x.getParent());
-
             dir.mkdirs();
 
             try (
@@ -493,7 +486,7 @@ public class DriverDownloadTest {
         return "";
     }
 
-    public static int countLinesInFile(String filename) throws IOException {
+    public static int countLinesInFile(String filename) {
 
         int count = 0;
         FileReader fr = null;
@@ -524,7 +517,7 @@ public class DriverDownloadTest {
         return count;
     }
 
-    public static String[] getLinesFromFile(String filename) throws IOException {
+    public static String[] getLinesFromFile(String filename) {
 
         int count; // количество строк в файле
         String lines[] = null; // массив строк - результат
@@ -570,7 +563,7 @@ public class DriverDownloadTest {
         return lines;
     }
 
-    public static void writeLinesToFile(String lines[], String filename) throws IOException {
+    public static void writeLinesToFile(String lines[], String filename) {
 
         FileOutputStream fs = null;
         PrintStream ps = null;

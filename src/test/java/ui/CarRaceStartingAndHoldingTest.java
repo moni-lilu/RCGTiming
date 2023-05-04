@@ -8,11 +8,10 @@ import java.io.IOException;
 
 import static com.codeborne.selenide.WebDriverRunner.url;
 
-public class CarRaceStartingAndHoldingTests {
+public class CarRaceStartingAndHoldingTest {
     private static final String eventsURL = "https://stage.rcgtiming.com/Timing/Competitions";
     private static final String mainURL = "https://stage.rcgtiming.com/";
     static Controller controller = new Controller();
-    private static MainPage mainPage = new MainPage();
     private static EventPage eventPage = new EventPage();
     private static CompetitionHeatPage competitionHeatPage = new CompetitionHeatPage();
     private static String userName = "Robert Buttle";
@@ -36,11 +35,6 @@ public class CarRaceStartingAndHoldingTests {
                 password
         );
         controller.activateAccount();
-// для отладки
-    /*    Selenide.open("https://rcgt:forthewin@stage.rcgtiming.com/");
-        controller.userSignIn("july.luna.m+maintest@gmail.com", password);
-        mainPage.getEventsButton().click();*/
-// -----------
         controller.eventCreation(eventName);
         controller.eventsPage.getEventTitleInTheTable().click();
         event = url() + "#drivers";
@@ -49,7 +43,7 @@ public class CarRaceStartingAndHoldingTests {
         eventPage.getBuggy8Nitro().click();
         eventPage.getConfirmButtonInAddClassesModalWindow().click();
         eventPage.getDriversTab().click();
-        DriverRegistrationTests.addDriverEntry("Buggy 8 Nitro",
+        DriverRegistrationTest.addDriverEntry("Buggy 8 Nitro",
                 "Carlos",
                 "Canas",
                 "Spain",

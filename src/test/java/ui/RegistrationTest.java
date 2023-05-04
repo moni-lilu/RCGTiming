@@ -6,10 +6,9 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.hamcrest.MatcherAssert;
 import org.junit.*;
 
-
 import static org.hamcrest.CoreMatchers.containsString;
 
-public class RegistrationTests {
+public class RegistrationTest {
 
     static Controller controller;
     public static String urlMainPage = "";
@@ -247,7 +246,6 @@ public class RegistrationTests {
 
     @Test
     public void shouldSignUpWith58SymbolsEmailAddress () {
-
         controller.fullShortRegistrationForm(name,
                 generateString(48) + "@gmail.com",
                 countryNumber,
@@ -255,12 +253,10 @@ public class RegistrationTests {
                 password,
                 password);
         checkUserCreation();
-
     }
 
     @Test
     public void shouldSignUpWith99SymbolsEmailAddress () {
-
         controller.fullShortRegistrationForm(name,
                 generateString(89) + "@gmail.com",
                 countryNumber,
@@ -272,7 +268,6 @@ public class RegistrationTests {
 
     @Test
     public void shouldSignUpWith100SymbolsEmailAddress () {
-
         controller.fullShortRegistrationForm(name,
                 generateString(90) + "@gmail.com",
                 countryNumber,
@@ -280,7 +275,6 @@ public class RegistrationTests {
                 password,
                 password);
         checkUserCreation();
-
     }
 
     @Test

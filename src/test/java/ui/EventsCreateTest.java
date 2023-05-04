@@ -15,7 +15,7 @@ import java.util.Date;
 
 import static org.hamcrest.CoreMatchers.containsString;
 
-public class EventsCreateTests {
+public class EventsCreateTest {
 
     static Controller controller = new Controller();
     private static EventsPage eventsPage = new EventsPage();
@@ -111,7 +111,7 @@ public class EventsCreateTests {
     }
 
     @Test
-    public void shouldBeDisplayStartDateTwoDaysAfterTheCurrentOneOnTheEventsTable() throws InterruptedException {
+    public void shouldBeDisplayStartDateTwoDaysAfterTheCurrentOneOnTheEventsTable() {
         String startDate = daysToEventStartOrEnd(2);
         String endDate = daysToEventStartOrEnd(4);
         createEventIncludingDates(eventName, startDate, endDate);
@@ -139,7 +139,7 @@ public class EventsCreateTests {
     }
 
     @Test
-    public void shouldReturnErrorEndDateShouldNotGoBeforeStartDateIfEndDateBeforeStartDate() throws InterruptedException {
+    public void shouldReturnErrorEndDateShouldNotGoBeforeStartDateIfEndDateBeforeStartDate() {
         String startDate = daysToEventStartOrEnd(4);
         String endDate = daysToEventStartOrEnd(2);
         createEventIncludingDates(eventName, startDate, endDate);
@@ -197,7 +197,6 @@ public class EventsCreateTests {
         eventsPage.getEventTitleField().setValue(title);
         eventsPage.getEventStartDateOnTheForm().setValue(start);
         eventsPage.getEventEndDateOnTheForm().setValue(end);
-
     }
 
     public static void trackCreate() throws InterruptedException {
