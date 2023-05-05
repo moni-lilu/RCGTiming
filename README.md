@@ -117,20 +117,7 @@ cat /var/jenkins_home/secrets/initialAdminPassword
 
 * docker_config.ini
 ```bash
-; for Docker
-[accesses]
-StageLogin=login
-StagePassword=password
-AdminEmail=admin@email.com
-AdminPassword=password
-TestEmail=test@email.com
-TestPassword=password
 
-[configuration]
-DownloadsFolderPath=path
-IPForConnaction=ip
-AuthorisationToken=token
-Headless=true
 ```
 
 * To run tests, you need to run the emulator
