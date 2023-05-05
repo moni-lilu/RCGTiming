@@ -94,11 +94,12 @@ docker service  create \
 --secret rcgt_config \
 myjenkins-blueocean:2.387.2-1
 ```
-* Go to link http://localhost:8080/
-* This screen will open
-```bash
+* Go to link http://localhost:8080/ This screen will open
+![screenshot-1]()
 
-```
+
+
+
 ```bash
 
 ```
