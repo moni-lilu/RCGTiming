@@ -106,7 +106,15 @@ cat /var/jenkins_home/secrets/initialAdminPassword
 * Go to link http://localhost:8080/ This screen will open
 ![screenshot-1](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-1.png)
 * Enter the password obtained in the previous step in the field "Administrator password"
-* 
+* Select "Install suggested plugins"
+![screenshot-2](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-2.png)
+* Fill in the form and press "Save and Continue"
+![screenshot-3](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-3.png)
+* Press "Save and Finish" in the next screen
+![screenshot-4](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-4.png)
+* Press "Start using Jenkins"
+![screenshot-5](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-5.png)
+
 ```bash
 
 ```
