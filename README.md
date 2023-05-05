@@ -95,7 +95,7 @@ docker service  create \
 myjenkins-blueocean:2.387.2-1
 ```
 * Go to link http://localhost:8080/ This screen will open
-![screenshot-1]()
+![screenshot-1](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-1.png)
 
 
 
