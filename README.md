@@ -113,7 +113,7 @@ cat /var/jenkins_home/secrets/initialAdminPassword
 * Press "Save and Finish" in the next screen
 ![screenshot-4](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-4.png)
 * Press "Start using Jenkins"
-![screenshot-5](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-5.png)
+
 
 ```bash
 
