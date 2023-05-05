@@ -94,15 +94,19 @@ docker service  create \
 --secret rcgt_config \
 myjenkins-blueocean:2.387.2-1
 ```
+* Go to jenkins-docker terminal
+* Execute a command
+```bash
+cat /var/jenkins_home/secrets/initialAdminPassword
+```
+* Get the password like 
+```bash
+06fa6035e6ca477aadd197a2d8912889
+```
 * Go to link http://localhost:8080/ This screen will open
 ![screenshot-1](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-1.png)
-
-
-
-
-```bash
-
-```
+* Enter the password obtained in the previous step in the field "Administrator password"
+* 
 ```bash
 
 ```
