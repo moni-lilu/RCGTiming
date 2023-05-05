@@ -60,14 +60,31 @@ docker swarm init
 ```
 * Create docker_config.ini with the following content:
 ```bash
+; for Docker
+[accesses]
+StageLogin=login
+StagePassword=password
+AdminEmail=admin@email.com
+AdminPassword=password
+TestEmail=test@email.com
+TestPassword=password
 
+[configuration]
+DownloadsFolderPath=path
+IPForConnaction=ip
+AuthorisationToken=token
+Headless=true
 ```
+* Create a secret from the file docker_config.ini
 ```bash
-
+docker secret create rcgt_config docker_config.ini
 ```
+* Create a service 
 ```bash
-
+docker service  create --name jenkins-chrome --network bridge --env DOCKER_HOST=tcp://docker:2376 --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 --publish 8080:8080 --publish 50000:50000 --mount type=volume,source=jenkins-data,destination=/var/jenkins_home --mount type=volume,source=jenkings-docker-certs,destination=/certs/client:ro --secret rcgt_config myjenkins-blueocean:2.387.2-1
 ```
+* Go to link http://localhost:8080/
+* This screen will open
 ```bash
 
 ```
