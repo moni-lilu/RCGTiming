@@ -113,19 +113,40 @@ cat /var/jenkins_home/secrets/initialAdminPassword
 * Press "Save and Finish" in the next screen
 ![screenshot-4](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-4.png)
 * Press "Start using Jenkins"
-
-
-```bash
-
-```
-```bash
-
-```
-
-
-* docker_config.ini
-```bash
-
-```
-
-* To run tests, you need to run the emulator
+![screenshot-5](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-5.png)
+* Press "Configure Jenkins" and select "Manage Plugins"
+![screenshot-16](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-16.png)
+* Find and install the Allure plugin
+![screenshot-17](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-17.png)
+![screenshot-18](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-18.png)
+![screenshot-19](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-19.png)
+![screenshot-20](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-20.png)
+* Choose «Конфигурация глобальных инструментов»
+![screenshot-6](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-6.png)
+* Find the "Add Maven" option. Click on it and fill in the "Name" field. Press Save.
+![screenshot-7](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-7.png)
+* Press «Add Allure Commandline»
+![screenshot-21](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-21.png)
+* Enter a name, select a version and save the configuration
+![screenshot-22](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-22.png)
+* Press "Create Item"
+![screenshot-8](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-8.png)
+* Enter a task name, select "Create a task with free configuration" and press OK
+![screenshot-9](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-9.png)
+* Fill in the Repository URL field in the Source Code Management section
+![screenshot-10](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-10.png)
+* In the Credentials block, click Add → Jenkins. Enter GitHub username and password and press Add
+![screenshot-11](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-11.png)
+* Choose username and password from the dropdown list
+![screenshot-12](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-12.png)
+* Press "Add Build Step", select "Invoke top-level Maven targets"
+![screenshot-13](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-13.png)
+* Select a name in the "Maven version" field. Write "clean test" in the "Goals" field
+![screenshot-14](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-14.png)
+* Click "Add Post Assembly Step" and select "Allure Report" in "Post Assembly" section
+![screenshot-23](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-23.png)
+* Enter "target/allure-results" in the Path field
+![screenshot-24](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-24.png)
+* Press "Save"
+* Press "Collect now"
+![screenshot-15](https://github.com/moni-lilu/RCGTiming/blob/main/screenshots/screenshot-15.png)
