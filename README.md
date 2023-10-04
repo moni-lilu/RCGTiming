@@ -88,7 +88,7 @@ docker service  create ^
 --mount type=volume,source=jenkins-data,destination=/var/jenkins_home ^
 --mount type=volume,source=jenkings-docker-certs,destination=/certs/client:ro ^
 --secret rcgt_config ^
-myjenkins-blueocean:2.387.2-1
+myjenkins-blueocean:2.387.3-1
 ```
 * Go to jenkins-docker terminal
 * Execute a command
