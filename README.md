@@ -1,14 +1,10 @@
 ## Table of contents
 * [General info](#general-info)
-* [Technologies](#technologies)
 * [Setup](#setup)
 
 ## General info
 These automation tests designed to test the main functionality of the project RCGTiming https://rcgtiming.com/
 	
-## Technologies
-Project is created with:
-
 ## Setup
 
 * Install Docker desktop https://docs.docker.com/get-docker/
