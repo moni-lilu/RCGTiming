@@ -54,7 +54,7 @@ docker build -t myjenkins-blueocean:2.387.3-1 .
 ```bash
 docker swarm init
 ```
-* Create docker_config.ini with the following content:
+* Create docker_config.ini with the following content (to create TestPassword use this information https://support.google.com/accounts/answer/185833):
 ```bash
 ; for Docker
 [accesses]
